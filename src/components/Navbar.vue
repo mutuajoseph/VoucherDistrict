@@ -33,6 +33,11 @@ export default {
         getCurrentUser() {
             let user = localStorage.getItem('currentUser')
             this.currentUser = user
+        },
+        logout(){
+            localStorage.removeItem('currentUser')
+            this.currentUser = null
+            this.$router.push({path: '/'})
         }
     }
 }
