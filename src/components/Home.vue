@@ -28,7 +28,7 @@
             Lieben eine Freude zu machen
           </div>
           <div class="my-4">
-            <button class="bg-red-800 py-2 px-4 text-white font-bold">
+            <button @click="$router.push({path: `/buy`})" class="bg-red-800 py-2 px-4 text-white font-bold">
               Shop Now
             </button>
           </div>
@@ -225,97 +225,13 @@
         </div>
       </div>
     </section>
-
-    <footer class="footer my-8">
-      <div class="container">
-        <div class="row">
-          <div class="col-lg-4 col-md-6 col-sm-7">
-            <div class="footer__about">
-              <h4 class="font-bold">Contact us:</h4>
-              <p class="text-white">Voucher District Gmbh in Zürich</p>
-              <div class="footer__payment">
-                <a href="#"
-                  ><img src="assets/img/payment/payment-1.png" alt=""
-                /></a>
-                <a href="#"
-                  ><img src="assets/img/payment/payment-2.png" alt=""
-                /></a>
-                <a href="#"
-                  ><img src="assets/img/payment/payment-3.png" alt=""
-                /></a>
-                <a href="#"
-                  ><img src="assets/img/payment/payment-4.png" alt=""
-                /></a>
-                <a href="#"
-                  ><img src="assets/img/payment/payment-5.png" alt=""
-                /></a>
-              </div>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-3 col-sm-5">
-            <div class="footer__widget">
-              <h6>Quick links</h6>
-              <ul>
-                <li>
-                  <a class=""
-                    ><router-link to="/add">Add Voucher</router-link></a
-                  >
-                </li>
-                <li><a href="#">Blogs</a></li>
-                <li><a href="#">Contact</a></li>
-                <li><a href="#">FAQ</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-2 col-md-3 col-sm-4">
-            <div class="footer__widget">
-              <h6>Account</h6>
-              <ul>
-                <li><a href="#">My Account</a></li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-lg-4 col-md-8 col-sm-8">
-            <div class="footer__newslatter">
-              <h6>NEWSLETTER</h6>
-              <form action="#">
-                <input type="text" placeholder="Email" />
-                <button type="submit" class="site-btn">Subscribe</button>
-              </form>
-              <div class="footer__social">
-                <a href="#"><i class="fa fa-facebook"></i></a>
-                <a href="#"><i class="fa fa-twitter"></i></a>
-                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                <a href="#"><i class="fa fa-instagram"></i></a>
-                <a href="#"><i class="fa fa-pinterest"></i></a>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-lg-12">
-            <div class="footer__copyright__text">
-              <p>
-                Copyright &copy; 2021 All rights reserved | Voucher District
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </footer>
-    <div class="search-model">
-      <div class="h-100 d-flex align-items-center justify-content-center">
-        <div class="search-close-switch">+</div>
-        <form class="search-model-form">
-          <input type="text" id="search-input" placeholder="Search here....." />
-        </form>
-      </div>
-    </div>
+    <Footer />
   </div>
 </template>
 
 <script>
 import Navbar from "./Navbar.vue";
+import Footer from "./Footer.vue"
 import jQuery from "jquery";
 const $ = jQuery;
 window.$ = $;
@@ -330,6 +246,7 @@ export default {
 
   components: {
     Navbar,
+    Footer
   },
 };
 </script>

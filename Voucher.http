@@ -1,0 +1,18 @@
+# POST http://138.68.189.32:9087/api/signUp
+# content-type: application/json
+
+# {
+#   "email": "mutuajoseph@gmail.com",
+#   "id": 0,
+#   "password": "123456789",
+#   "username": "mutuajoseph"
+# }
+
+
+POST http://138.68.189.32:9087/api/authenticate
+content-type: application/json
+
+{
+  "password": "123456789",
+  "username": "mutuajoseph"
+}

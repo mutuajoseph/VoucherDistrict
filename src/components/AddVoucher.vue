@@ -1,48 +1,50 @@
 <template>
-  <div class="submit-form">
-    <div v-if="!submitted">
-      <br /><br />
-      <br /><br />
-      <br /><br />
-      <br /><br />
-      <div class="form-group">
-        <label for="title">Title</label>
+  <div class="add-voucher">
+    <Navbar />
+    <div class="shadow-md my-20 w-4/12 mx-auto p-3" v-if="!submitted">
+      <div class="flex flex-col">
+        <label class="font-bold text-sm" for="title">Title</label>
         <input
           type="text"
-          class="form-control"
+          class="border-b border-gray-300"
           id="title"
+          placeholder="Enter voucher title"
           required
           v-model="voucher.title"
           name="title"
         />
       </div>
-      <div class="form-group">
-        <label for="description">Description</label>
+      <div class="flex flex-col py-4">
+        <label class="font-bold text-sm"  for="description">Description</label>
         <input
-          class="form-control"
+          class="border-b border-gray-300"
           id="description"
+          placeholder="Enter voucher description"
           required
           v-model="voucher.description"
           name="description"
         />
       </div>
-      <button @click="saveVoucher" class="btn btn-success">Submit</button>
+      <button @click="saveVoucher" class="w-full text-white bg-red-800 rounded font-bold py-2">Submit</button>
     </div>
     <div v-else>
-      <br /><br />
-      <br /><br />
-      <br /><br />
-      <br /><br />
       <h4>You submitted successfully!</h4>
       <button class="btn btn-success" @click="newVoucher">Add</button>
     </div>
+    <Footer />
   </div>
 </template>
 
 <script>
 import VoucherDataService from "../services/VoucherDataService";
+import Navbar from './Navbar.vue'
+import Footer from './Footer.vue'
 export default {
   name: "add-voucher",
+  components: {
+    Navbar,
+    Footer
+  },
   data() {
     return {
       voucher: {

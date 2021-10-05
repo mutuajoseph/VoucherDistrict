@@ -1,43 +1,46 @@
 <template>
-  <div class="list">
-    <div class="row">
-    <div class="col-md-4 col-sm-4 col-xs-12"></div>
-    <div class="col-md-4 col-sm-4 col-xs-12">
-      <div v-if="!submitted">
-        <div>
-          <br /><br />
-          <br /><br />
-          <br /><br />
-          <h4>Aktiviere dein Gutschein</h4>
-          <br /><br />
-          Aktiviere dein Gutschein jetzt! Benutze dazu die ID, die du erhalten
-          hast. Der Gutschein wird nach der Aktivierung in deiner Bibliothek abrufbar sein.
-          <br /><br />
-          <div class="input-group mb-3">
-            <input
-              type="text"
-              class="form-control"
-              placeholder="Type in Voucher ID"
-              v-model="id"
-            />
-            <button @click="activateVoucher" class="btn btn-outline-secondary">
-              Activate
-            </button>
+  <div class="">
+    <Navbar />
+    <div class="">
+      <div class="">
+        <div class="w-5/12 mx-auto shadow-md p-3 my-20" v-if="!submitted">
+          <div>
+            <h4 class="font-bold">Aktiviere dein Gutschein</h4>
+            <div class="py-3 text-sm">
+              Aktiviere dein Gutschein jetzt! Benutze dazu die ID, die du
+              erhalten hast. Der Gutschein wird nach der Aktivierung in deiner
+              Bibliothek abrufbar sein.
+            </div>
+
+            <div class="my-4">
+              <div class="">
+                <input
+                  type="text"
+                  class="border-b border-gray-300 w-full"
+                  placeholder="Type in Voucher ID"
+                  v-model="id"
+                />
+                <button
+                  class="w-full mt-4 bg-red-800 py-2 text-white font-bold rounded"
+                  @click="activateVoucher"
+                >
+                  Activate
+                </button>
+              </div>
+            </div>
           </div>
         </div>
+        <div v-else>
+          <br /><br />
+          <br /><br />
+          <br /><br />
+          <h4>{{ message }}</h4>
+          <button @click="activateVoucher" class="btn btn-outline-secondary">
+            Activate
+          </button>
+        </div>
       </div>
-      <div v-else>
-        <br /><br />
-        <br /><br />
-        <br /><br />
-        <h4>{{ message }}</h4>
-        <button @click="activateVoucher" class="btn btn-outline-secondary">
-          Activate
-        </button>
-      </div>
-    </div>
-    <div class="col-md-4 col-sm-4 col-xs-12"></div>
-
+      <Footer />
     </div>
   </div>
 </template>
@@ -46,8 +49,15 @@
 
 <script>
 import VoucherDataService from "../services/VoucherDataService";
+import Navbar from "./Navbar.vue";
+import Footer from "./Footer.vue";
 export default {
   name: "activate-vouchers",
+  components: {
+    Navbar,
+    Footer,
+  },
+
   data() {
     return {
       vouchers: [],
@@ -61,7 +71,10 @@ export default {
   },
   methods: {
     activateVoucher() {
-      VoucherDataService.activate(this.id, localStorage.getItem("currentUserName"))
+      VoucherDataService.activate(
+        this.id,
+        localStorage.getItem("currentUserName")
+      )
         .then((response) => {
           this.submitted = true;
           this.vouchers = response.data;

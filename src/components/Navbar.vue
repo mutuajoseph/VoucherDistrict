@@ -1,6 +1,6 @@
 <template>
   <div id="navbar" class="bg-red-800 text-white w-full h-20 flex justify-between items-center px-24">
-    <div class="font-bold text-2xl">
+    <div @click="$router.push({path: `/`})" class="cursor-pointer font-bold text-2xl">
         Voucher District
     </div>
 
@@ -20,7 +20,21 @@
 
 <script>
 export default {
+    name: "Navbar",
+    data: () => ({
+        currentUser: null
+    }),
 
+    created() {
+        this.getCurrentUser()
+    },
+
+    methods: {
+        getCurrentUser() {
+            let user = localStorage.getItem('currentUser')
+            this.currentUser = user
+        }
+    }
 }
 </script>
 
