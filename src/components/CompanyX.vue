@@ -52,8 +52,15 @@
       </button>
     </div>
 
-    <div v-else class="w-5/12 mx-auto shadow-md p-4 my-24 flex flex-col justify-center items-center gap-4">
+    <!-- <div v-else class="w-5/12 mx-auto shadow-md p-4 my-24 flex flex-col justify-center items-center gap-4">
       <h4>You submitted successfully!</h4>
+      <button class="btn btn-success" @click="newVoucher">Add</button>
+    </div> -->
+
+
+     <div v-else class="w-7/12 mx-auto shadow-md p-4 my-24 flex flex-col justify-center items-center gap-4">
+      <img src="../assets/checked.gif" alt="Checked">
+      <h4>Congrats! Voucher bought successfully!</h4>
       <button class="btn btn-success" @click="newVoucher">Add</button>
     </div>
     <Footer />
@@ -79,6 +86,7 @@ export default {
         amount: "",
         mail: "",
         published: false,
+        loading: false
       },
       submitted: false,
     };
@@ -95,13 +103,13 @@ export default {
         amount: this.voucher.amount,
         mail: this.voucher.mail,
       };
+      this.loading = true
       VoucherDataService.create(data)
         .then((response) => {
           this.voucher.id = response.data.id;
           console.log(response.data);
+          this.loading = false;
           this.submitted = true;
-
-          this.$alert("Hello Vue Simple Alert.");
         })
         .catch((e) => {
           console.log(e);

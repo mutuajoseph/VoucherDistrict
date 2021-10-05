@@ -107,8 +107,8 @@ export default {
       AuthService.registerUser(obj)
         .then((response) => {
           console.log(response);
-          // window.alert("Successfully Registered");
-          // this.$router.push({ name: "login" });
+          window.alert("Successfully Registered");
+          this.$router.push({ name: "login" });
         })
         .catch((e) => {
           console.log(e.response)

@@ -4,7 +4,8 @@ import 'bootstrap'
 import 'startbootstrap-freelancer/dist/css/styles.css'
 import router from './router'
 import axios from 'axios';
-import VueSimpleAlert from "vue-simple-alert";
+import VueSweetalert2 from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
 import './index.css'
 
 
@@ -29,8 +30,8 @@ axios.interceptors.request.use((request) => {
 
 // import vuelidate from 'vuelidate'
 
-createApp(App).use(router).mount('#app')
-createApp(App).use(VueSimpleAlert).mount('#app')
+createApp(App).use(router,VueSweetalert2).mount('#app')
+
 
 
 

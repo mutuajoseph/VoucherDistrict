@@ -81,7 +81,7 @@ export default {
           if (response.data.published === false) {
             this.message = "Your voucher is already in use!";
           } else {
-            this.message = "F OFF";
+            this.message = "Congrats! You have registered your voucher. Access it in you library";
           }
           console.log(response.data);
           window.alert(response.data.mail);
